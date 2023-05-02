@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { BrowserAnimationsModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyOverlayService } from './my-overlay.service';
 import { ComponentForDialogComponent } from './component-for-dialog/component-for-dialog.component';
 

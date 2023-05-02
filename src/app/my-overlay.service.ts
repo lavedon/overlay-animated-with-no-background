@@ -3,8 +3,6 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentForDialogComponent } from './component-for-dialog/component-for-dialog.component';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
