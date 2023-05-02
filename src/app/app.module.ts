@@ -4,17 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser';
+import { MyOverlayService } from './my-overlay.service';
+import { ComponentForDialogComponent } from './component-for-dialog/component-for-dialog.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ComponentForDialogComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     OverlayModule
   ],
-  providers: [],
+  providers: [MyOverlayService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

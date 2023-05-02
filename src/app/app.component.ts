@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MyOverlayService } from './my-overlay.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'slide-in-out-WITH-cdk';
+
+  constructor(private myOverlayService: MyOverlayService) {}
+
+  showOverlay() {
+    this.myOverlayService.open();
+  }
 }
