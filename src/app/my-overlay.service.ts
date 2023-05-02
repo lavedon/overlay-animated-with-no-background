@@ -3,6 +3,7 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentForDialogComponent } from './component-for-dialog/component-for-dialog.component';
 import { OverlayConfig }  from '@angular/cdk/overlay';
+import { MyOverlayRef } from 'my-overlay-ref';
 
 
 interface DialogConfig {
@@ -28,6 +29,11 @@ export class MyOverlayService {
     const overlayRef = this.createOverlay(dialogConfig);
 
     overlayRef.attach(overlayPortal);
+
+    const dialogRef = new MyOverlayRef(overlayRef);
+
+    overlayRef.backdropClick().subscribe(() => dialogRef.close());
+    return dialogRef;
   }
 
   private getOverlayConfig(config: DialogConfig): OverlayConfig {
@@ -50,6 +56,7 @@ export class MyOverlayService {
       const overlayConfig = this.getOverlayConfig(config);
       return this.overlay.create(overlayConfig);
     }
+
 
 
 }

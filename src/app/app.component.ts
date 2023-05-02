@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MyOverlayService } from './my-overlay.service';
+import { MyOverlayRef } from 'my-overlay-ref';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,10 @@ export class AppComponent {
   constructor(private myOverlayService: MyOverlayService) {}
 
   showOverlay() {
-    this.myOverlayService.open();
+    let dialogRef: MyOverlayRef =  this.myOverlayService.open();
+
+    setTimeout(() => {
+      dialogRef.close();
+    }, 2000);
   }
 }
