@@ -12,7 +12,7 @@ interface DialogConfig {
 }
 
 const DEFAULT_CONFIG: DialogConfig = {
-  hasBackdrop: false,
+  hasBackdrop: true,
   panelClass: 'dialog-panel'
 }
 
