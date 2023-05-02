@@ -1,3 +1,5 @@
-:host {
+div {
     background-color: hotpink;
+    width: 250px;
+    height: 400px;
 }
