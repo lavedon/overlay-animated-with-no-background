@@ -1,3 +1,5 @@
-<div [@slideInOut]>
+<div *ngIf="animationState !== 'out'" 
+[@slideInOut]="animationState"
+(@slideInOut.done)="onAnimationDone($event)">
 <h1>HELLO WORLD!</h1>
 </div>

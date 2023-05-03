@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ComponentRef } from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ComponentForDialogComponent } from './component-for-dialog/component-for-dialog.component';
 import { OverlayConfig }  from '@angular/cdk/overlay';
 import { MyOverlayRef } from 'my-overlay-ref';
+import { AnimationEvent } from '@angular/animations';
+
 
 
 interface DialogConfig {
@@ -27,12 +29,20 @@ export class MyOverlayService {
     const overlayPortal = new ComponentPortal(ComponentForDialogComponent)
     const dialogConfig = {...DEFAULT_CONFIG, ...config};
     const overlayRef = this.createOverlay(dialogConfig);
-
-    overlayRef.attach(overlayPortal);
-
+    
     const dialogRef = new MyOverlayRef(overlayRef);
+    const componentInstance: ComponentRef<ComponentForDialogComponent> = overlayRef.attach(overlayPortal);
 
-    overlayRef.backdropClick().subscribe(() => dialogRef.close());
+    overlayRef.backdropClick().subscribe(() => {
+      console.log('Backdrop clicked');
+      componentInstance.instance.close();
+    });
+
+    componentInstance.instance.closeAnimationDone.subscribe((state) => {
+      console.log('Animation done received', state);
+        dialogRef.dispose();
+      });
+
     return dialogRef;
   }
 
@@ -56,7 +66,4 @@ export class MyOverlayService {
       const overlayConfig = this.getOverlayConfig(config);
       return this.overlay.create(overlayConfig);
     }
-
-
-
 }

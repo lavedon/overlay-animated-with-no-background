@@ -5,5 +5,10 @@ export class MyOverlayRef {
 
     close(): void {
         this.overlayRef.dispose();
+
+    }
+
+    dispose(): void {
+        this.overlayRef.dispose();
     }
 }

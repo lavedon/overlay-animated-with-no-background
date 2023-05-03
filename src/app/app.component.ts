@@ -13,10 +13,7 @@ export class AppComponent {
   constructor(private myOverlayService: MyOverlayService) {}
 
   showOverlay() {
-    let dialogRef: MyOverlayRef =  this.myOverlayService.open();
+    this.myOverlayService.open();
 
-    setTimeout(() => {
-      dialogRef.close();
-    }, 2000);
   }
 }
