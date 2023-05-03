@@ -11,7 +11,7 @@ import {  AnimationEvent } from '@angular/animations';
   animations: [
     trigger('slideInOut', [
       state('in', style({transform: 'translateX(0)'})),
-      state('void', style({transform: 'translateX(110%)'})),
+      state('out', style({transform: 'translateX(110%)'})),
       transition(':enter', [
         style({transform: 'translateX(-110%)'}),
         animate('500ms')
@@ -28,7 +28,8 @@ export class ComponentForDialogComponent {
   @Output() closeAnimationDone = new EventEmitter<void>();
 
   onAnimationDone(event: AnimationEvent) {
-    if (event.toState === 'out') {
+    if (event.toState === 'out' && event.phaseName === 'done') {
+      console.log('Animation has reached done state.');
       this.closeAnimationDone.emit();
     }
   }

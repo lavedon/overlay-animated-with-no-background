@@ -29,7 +29,7 @@ export class MyOverlayService {
     const overlayPortal = new ComponentPortal(ComponentForDialogComponent)
     const dialogConfig = {...DEFAULT_CONFIG, ...config};
     const overlayRef = this.createOverlay(dialogConfig);
-    
+
     const dialogRef = new MyOverlayRef(overlayRef);
     const componentInstance: ComponentRef<ComponentForDialogComponent> = overlayRef.attach(overlayPortal);
 
